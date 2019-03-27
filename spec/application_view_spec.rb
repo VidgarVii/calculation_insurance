@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe ApplicationView do
   subject               { ApplicationView.new }
-  let(:person)          { OpenStruct.new(goods_cost: 30_000, downpayment: 3000, term: 12, age: 44, employment: :own_business, insurances: :job) }
+  let(:person)          { OpenStruct.new(goods_cost: 30_000, downpayment: 3000, term: 12, age: 44, employment: :own_business, insurances: [:job]) }
+  let(:person_all_in)   { OpenStruct.new(goods_cost: 30_000, downpayment: 3000, term: 12, age: 44, employment: :own_business, insurances: %i[life job]) }
   let(:call_to_console) { subject.render_to_console_for(person) }
   let(:render_to_html)  { subject.render_to_html_for(person) }
 

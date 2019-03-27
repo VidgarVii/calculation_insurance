@@ -7,7 +7,7 @@ class ApplicationView
     puts "Ежемесячный платеж: #{response[:monthly_payment]}"
     puts "Срок кредита: #{client.term} месяцев"
     puts "Сумма выплат: #{response[:amount_to_pay]}"
-    puts "Страхование: #{client.insurances}, #{response[:insurance]}"
+    puts "Страхование: #{client.insurances.join(', ')}, #{response[:insurance]}"
   end
 
   require 'launchy'
@@ -21,7 +21,7 @@ class ApplicationView
       file.puts "<p>Первоначальный взнос #{client.downpayment}"
       file.puts "<p>Ежемесячный платеж: #{response[:monthly_payment]}"
       file.puts "<p>Сумма выплат: #{response[:amount_to_pay]}"
-      file.puts "<p>Страхование: #{client.insurances}, #{response[:insurance]}</p>"
+      file.puts "<p>Страхование: #{client.insurances.join(', ')}, #{response[:insurance]}</p>"
     end
 
     Launchy::Browser.run('view/index.html')
