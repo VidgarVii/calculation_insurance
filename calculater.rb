@@ -61,6 +61,7 @@ require 'launchy'
 
 def render_to_html_for(client)
   response = calculation(client)
+
   File.open('view/index.html','w') do |file|
     file.puts "<h1>Calculate</h1>"
     file.puts "<p>Сумма займа: #{response[:loan_amount]}"
