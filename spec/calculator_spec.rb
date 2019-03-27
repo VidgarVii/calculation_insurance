@@ -61,7 +61,6 @@ describe Calculator do
       it 'assigns insurance' do
         expect(calculate[:insurance]).to eq 8217.82
       end
-
     end
   end
 end
