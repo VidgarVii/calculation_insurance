@@ -24,10 +24,10 @@ class Calculator
     (monthly_payment * @client.term).round(2)
   end
 
-  # порядок расчета введется по порядку ключей
-  # 1 - job
-  # 2 - life
-  # для смены порядка расчетов надо поменять ключи в константе INSURANCES местами
+  # the order of calculation is in the order of keys
+  #   1 - job
+  #   2 - life
+  #   to change the order of calculations, you need to swap the keys in the constant INSURANCES
   def run_calculate
     return 0.0 if @client.insurances.empty?
 
