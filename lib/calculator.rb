@@ -45,15 +45,15 @@ class Calculator
     @total_loan_amount ||= (loan_amount + @insurance_amount).round(2)
   end
 
+  def age_factor
+    return 1.1 if @client.age < 30
+    return 1.4 if @client.age < 60
+
+    1.8
+  end
+
   def calculate_life
-    @insurance_amount +=
-      if @client.age < 30
-        loan_amount * (1.1 / 100.0) * @client.term
-      elsif @client.age < 60
-        loan_amount * (1.4 / 100.0) * @client.term
-      else
-        loan_amount * (1.8 / 100.0) * @client.term
-      end
+    @insurance_amount += loan_amount * (age_factor / 100.0) * @client.term
   end
 
   def calculate_job
