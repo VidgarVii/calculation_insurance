@@ -1,6 +1,7 @@
 class Calculator
   INSURANCES = { job: :calculate_job,
                  life: :calculate_life }.freeze
+  RATE       = 0.0125 # 15 / 1200.0
 
   def initialize(client)
     @client = client
@@ -11,20 +12,13 @@ class Calculator
     run_calculate
 
     { loan_amount: total_loan_amount,
-      rate: rate,
+      rate: RATE,
       monthly_payment: monthly_payment,
       amount_to_pay: amount_to_pay,
       insurance: @insurance_amount.round(2) }
   end
 
   private
-
-  # rate - этот параметр надо как-то по другому передавать. Из вне.
-  # Так как для меня это магические цифры.
-  # либо RATE = 0.0125
-  def rate
-    15 / 1200.0
-  end
 
   def amount_to_pay
     (monthly_payment * @client.term).round(2)
@@ -44,7 +38,7 @@ class Calculator
 
   def monthly_payment
     @monthly_payment ||=
-      (rate * (rate + 1)**@client.term / ((rate + 1)**@client.term - 1) * total_loan_amount).round(2)
+      (RATE * (RATE + 1)**@client.term / ((RATE + 1)**@client.term - 1) * total_loan_amount).round(2)
   end
 
   def total_loan_amount
