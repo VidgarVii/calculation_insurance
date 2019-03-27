@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Calculator do
-  subject         { Calculator.new }
   let(:person)    { OpenStruct.new(goods_cost: 30_000, downpayment: 3000, term: 12, age: 44, employment: :own_business,  insurances: :job ) }
-  let(:calculate) { subject.insurance(person) }
+  subject         { Calculator.new(person) }
+  let(:calculate) { subject.insurance }
 
   context '#culculate' do
     it 'return to hash' do

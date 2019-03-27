@@ -1,6 +1,6 @@
 class ApplicationView
   def render_to_console_for(client)
-    response = calculation.insurance(client)
+    response = calculation(client).insurance
 
     puts "Сумма займа: #{response[:loan_amount]}"
     puts "Первоначальный взнос #{client.downpayment}"
@@ -13,7 +13,7 @@ class ApplicationView
   require 'launchy'
 
   def render_to_html_for(client)
-    response = calculation.insurance(client)
+    response = calculation(client).insurance
 
     File.open('view/index.html','w') do |file|
       file.puts "<h1>Calculate</h1>"
@@ -29,7 +29,7 @@ class ApplicationView
 
   private
 
-  def calculation
-    Calculator.new
+  def calculation(client)
+    Calculator.new(client)
   end
 end
