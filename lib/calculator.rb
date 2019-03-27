@@ -1,5 +1,5 @@
 class Calculator
-  INSURANCES = %i[job life]
+  INSURANCES = %i[job life].freeze
   RATE = 15 / 1200.0
 
   def initialize(client)
@@ -11,8 +11,7 @@ class Calculator
       rate: RATE,
       monthly_payment: monthly_payment,
       amount_to_pay: amount_to_pay,
-      insurance: insurance_amount.round(2)
-    }
+      insurance: insurance_amount.round(2) }
   end
 
   private
@@ -54,7 +53,7 @@ class Calculator
   def calculate_job
     case @client.employment
     when :own_business
-      loan_amount / (1 - @client.term / 100.0 ) - loan_amount
+      loan_amount / (1 - @client.term / 100.0) - loan_amount
     when :clerk
       loan_amount * 0.014
     else

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Calculator do
-  let(:person)    { OpenStruct.new(goods_cost: 30_000, downpayment: 3000, term: 12, age: 44, employment: :own_business,  insurances: :job ) }
+  let(:person)    { OpenStruct.new(goods_cost: 30_000, downpayment: 3000, term: 12, age: 44, employment: :own_business, insurances: :job) }
   subject         { Calculator.new(person) }
   let(:calculate) { subject.insurance }
 
@@ -11,7 +11,7 @@ describe Calculator do
     end
 
     it 'assigns loan_amount' do
-      expect(calculate[:loan_amount]).to eq 30681.82
+      expect(calculate[:loan_amount]).to eq 30_681.82
     end
 
     it 'assigns rate' do
@@ -23,7 +23,7 @@ describe Calculator do
     end
 
     it 'assigns amount_to_pay' do
-      expect(calculate[:amount_to_pay]).to eq 33231.48
+      expect(calculate[:amount_to_pay]).to eq 33_231.48
     end
 
     it 'assigns insurance' do
