@@ -1,12 +1,14 @@
 require 'spec_helper'
 
 describe Calculator do
-  let(:person)    { OpenStruct.new(goods_cost: 30_000,
-                                   downpayment: 3000,
-                                   term: 12,
-                                   age: 44,
-                                   employment: :own_business,
-                                   insurances: [:job]) }
+  let(:person) do
+    OpenStruct.new(goods_cost: 30_000,
+                   downpayment: 3000,
+                   term: 12,
+                   age: 44,
+                   employment: :own_business,
+                   insurances: [:job])
+  end
 
   subject         { Calculator.new(person) }
   let(:calculate) { subject.insurance }
@@ -37,12 +39,14 @@ describe Calculator do
     end
 
     context 'for all in' do
-      let(:person_all_in) { OpenStruct.new(goods_cost: 30_000,
-                                           downpayment: 3000,
-                                           term: 12,
-                                           age: 44,
-                                           employment: :own_business,
-                                           insurances: %i[life job]) }
+      let(:person_all_in) do
+        OpenStruct.new(goods_cost: 30_000,
+                       downpayment: 3000,
+                       term: 12,
+                       age: 44,
+                       employment: :own_business,
+                       insurances: %i[life job])
+      end
       subject             { Calculator.new(person_all_in) }
       let(:calculate)     { subject.insurance }
 

@@ -1,6 +1,6 @@
 class Calculator
-  INSURANCES = { job:  :calculate_job,
-                 life: :calculate_life }
+  INSURANCES = { job: :calculate_job,
+                 life: :calculate_life }.freeze
 
   def initialize(client)
     @client = client
@@ -38,7 +38,7 @@ class Calculator
     return 0.0 if @client.insurances.empty?
 
     INSURANCES.each_key do |type|
-      self.send INSURANCES[type] if @client.insurances.include?(type)
+      send INSURANCES[type] if @client.insurances.include?(type)
     end
   end
 
